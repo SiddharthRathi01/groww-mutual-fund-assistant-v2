@@ -41,7 +41,7 @@ export async function saveHistory(entry: {
     user_id: userId,
     question: entry.question,
     answer: entry.answer,
-    scheme_code: entry.scheme_code,
+    scheme: entry.scheme_code,
     source_url: entry.source_url,
   });
 
