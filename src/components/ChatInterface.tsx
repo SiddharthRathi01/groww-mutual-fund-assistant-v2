@@ -22,6 +22,7 @@ interface ChatMessage {
   text: string;
   sourceUrl?: string;
   sourceName?: string;
+  lastUpdated?: string;
   isRefusal?: boolean;
 }
 
@@ -77,6 +78,7 @@ export function ChatInterface({ selectedScheme, onHistorySaved }: ChatInterfaceP
       text: result.answer,
       sourceUrl: result.sourceUrl,
       sourceName: result.sourceName,
+      lastUpdated: result.lastUpdated,
       isRefusal: result.isRefusal,
     };
     setMessages((m) => [...m, assistantMsg]);
@@ -151,8 +153,18 @@ export function ChatInterface({ selectedScheme, onHistorySaved }: ChatInterfaceP
               className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in-up`}
             >
               {msg.role === 'assistant' && (
-                <div className="icon-box w-7 h-7 icon-green mr-2 mt-0.5 flex-shrink-0">
-                  <Sparkles size={12} strokeWidth={1.75} />
+                <div
+                  className={`icon-box w-7 h-7 mr-2 mt-0.5 flex-shrink-0 ${
+                    msg.isRefusal
+                      ? 'bg-red-50 text-red-600 border border-red-200/80 dark:bg-red-950/40 dark:text-red-400 dark:border-red-900/60'
+                      : 'icon-green'
+                  }`}
+                >
+                  {msg.isRefusal ? (
+                    <AlertTriangle size={12} strokeWidth={2} />
+                  ) : (
+                    <Sparkles size={12} strokeWidth={1.75} />
+                  )}
                 </div>
               )}
               <div className={`max-w-[80%] ${msg.role === 'user' ? '' : 'min-w-0'}`}>
@@ -161,7 +173,7 @@ export function ChatInterface({ selectedScheme, onHistorySaved }: ChatInterfaceP
                     msg.role === 'user'
                       ? 'btn-primary rounded-br-md'
                       : msg.isRefusal
-                        ? 'surface-2 border border-strong rounded-bl-md'
+                        ? 'bg-red-50/75 border border-red-200/90 text-slate-800 dark:bg-red-950/25 dark:border-red-900/50 dark:text-slate-200 rounded-bl-md'
                         : 'surface-2 border border-default rounded-bl-md'
                   }`}
                 >
@@ -179,6 +191,11 @@ export function ChatInterface({ selectedScheme, onHistorySaved }: ChatInterfaceP
                       {msg.sourceName}
                       <ExternalLink size={10} className="opacity-60" />
                     </a>
+                    {msg.lastUpdated && (
+                      <span className="text-[11px] text-subtle">
+                        Updated {msg.lastUpdated}
+                      </span>
+                    )}
                   </div>
                 )}
               </div>
