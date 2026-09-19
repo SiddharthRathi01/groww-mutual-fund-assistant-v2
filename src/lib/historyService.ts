@@ -37,13 +37,27 @@ export async function saveHistory(entry: {
     throw new Error('No authenticated session — sign in to save question history.');
   }
 
-  const { error: insertError } = await supabase.from('question_history').insert({
+  const insertPayload = {
     user_id: userId,
     question: entry.question,
     answer: entry.answer,
     scheme: entry.scheme_code,
     source_url: entry.source_url,
-  });
+  };
+
+  console.log('[v0] Authenticated user_id immediately before question_history INSERT:', userId);
+  console.log('[v0] question_history INSERT payload:', insertPayload);
+
+  const { data: insertData, error: insertError } = await supabase
+    .from('question_history')
+    .insert(insertPayload)
+    .select();
+
+  console.log('[v0] question_history INSERT response data:', insertData);
+  console.log('[v0] question_history INSERT response error.code:', insertError?.code);
+  console.log('[v0] question_history INSERT response error.message:', insertError?.message);
+  console.log('[v0] question_history INSERT response error.details:', insertError?.details);
+  console.log('[v0] question_history INSERT response error.hint:', insertError?.hint);
 
   if (insertError) {
     throw new Error(`Unable to save question history: ${insertError.message}`);
