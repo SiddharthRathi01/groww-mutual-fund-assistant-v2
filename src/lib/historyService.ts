@@ -26,11 +26,26 @@ export async function saveHistory(entry: {
   source_url: string | null;
   scheme_code: string | null;
 }): Promise<void> {
-  const { data: sessionData } = await supabase.auth.getSession();
-  if (!sessionData.session) {
+  const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+
+  if (sessionError) {
+    throw new Error(`Unable to read the authenticated session: ${sessionError.message}`);
+  }
+
+  const userId = sessionData.session?.user.id;
+  if (!userId) {
     throw new Error('No authenticated session — sign in to save question history.');
   }
 
-  const { error } = await supabase.from('question_history').insert(entry);
-  if (error) throw error;
+  const { error: insertError } = await supabase.from('question_history').insert({
+    user_id: userId,
+    question: entry.question,
+    answer: entry.answer,
+    scheme_code: entry.scheme_code,
+    source_url: entry.source_url,
+  });
+
+  if (insertError) {
+    throw new Error(`Unable to save question history: ${insertError.message}`);
+  }
 }
