@@ -87,7 +87,7 @@ export function ChatInterface({ selectedScheme, onHistorySaved }: ChatInterfaceP
         question,
         answer: result.answer,
         source_url: result.sourceUrl || null,
-        scheme_code: selectedScheme.code,
+        scheme: selectedScheme.name,
       })
         .then(() => onHistorySaved?.())
         .catch((err) => console.error('[QuestionHistory] INSERT failed:', err));

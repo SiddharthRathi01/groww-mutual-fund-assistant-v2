@@ -1,12 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import { History, ExternalLink, FileText, ChevronRight, Inbox } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
-import { HDFC_SCHEMES } from '@/data/schemes';
 import { fetchHistory, type HistoryEntry } from '@/lib/historyService';
 
-function schemeName(code: string | null): string {
-  if (!code) return 'General';
-  return HDFC_SCHEMES.find((s) => s.code === code)?.name ?? code;
+function schemeName(scheme: string | null): string {
+  return scheme ?? 'General';
 }
 
 function formatDate(iso: string): string {
@@ -90,7 +88,7 @@ export function QuestionHistory({ refreshKey }: { refreshKey: number }) {
             >
               <p className="text-sm font-medium truncate">{entry.question}</p>
               <div className="flex items-center gap-2 mt-1">
-                <span className="text-xs text-primary truncate">{schemeName(entry.scheme_code)}</span>
+                <span className="text-xs text-primary truncate">{schemeName(entry.scheme)}</span>
                 <span className="text-subtle text-xs">·</span>
                 <span className="text-xs text-subtle">{formatDate(entry.created_at)}</span>
               </div>
