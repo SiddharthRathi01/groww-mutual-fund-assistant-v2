@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-import { handleRAGQuery } from './server/rag';
+import { handleRAGQuery } from './server/rag.js';
 
 const app = express();
 const PORT = 3000;
