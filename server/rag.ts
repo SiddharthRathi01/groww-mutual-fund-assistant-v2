@@ -107,7 +107,14 @@ function getGeminiClient(): GoogleGenAI | null {
     return null;
   }
   if (!cachedGeminiClient) {
-    cachedGeminiClient = new GoogleGenAI({ apiKey });
+    cachedGeminiClient = new GoogleGenAI({
+      apiKey,
+      httpOptions: {
+        headers: {
+          'User-Agent': 'aistudio-build',
+        },
+      },
+    });
   }
   return cachedGeminiClient;
 }
@@ -159,7 +166,7 @@ export async function handleRAGQuery(
         queryResult = await collection.query({
           queryTexts: [question],
           where: { scheme_or_scope: scheme.name },
-          nResults: 5,
+          nResults: 8,
         });
       } catch {
         queryResult = null;
@@ -170,7 +177,7 @@ export async function handleRAGQuery(
     if (!queryResult || !queryResult.documents?.[0] || queryResult.documents[0].length === 0) {
       queryResult = await collection.query({
         queryTexts: [queryText],
-        nResults: 5,
+        nResults: 8,
       });
     }
 
@@ -277,26 +284,62 @@ ${contextText}
 Answer:`;
 
   try {
-    let response;
-    try {
-      response = await gemini.models.generateContent({
-        model: 'gemini-3.6-flash',
-        contents: prompt,
-        config: {
-          systemInstruction,
-          temperature: 0.1,
-        },
-      });
-    } catch (primaryErr) {
-      console.warn('[RAG] Primary model failed, trying fallback:', primaryErr);
-      response = await gemini.models.generateContent({
-        model: 'gemini-flash-latest',
-        contents: prompt,
-        config: {
-          systemInstruction,
-          temperature: 0.1,
-        },
-      });
+    // Ordered to prefer resilient models with available quota first
+    const candidateModels = [
+      'gemini-3.1-flash-lite',
+      'gemini-3.8-flash',
+      'gemini-flash-latest',
+      'gemini-3.6-flash',
+    ];
+
+    let response = null;
+    let lastError: unknown = null;
+
+    for (const modelName of candidateModels) {
+      // Try up to 2 attempts per model with backoff if experiencing transient 503 high demand
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+          response = await gemini.models.generateContent({
+            model: modelName,
+            contents: prompt,
+            config: {
+              systemInstruction,
+              temperature: 0.1,
+            },
+          });
+          if (response && response.text) {
+            break;
+          }
+        } catch (modelErr: unknown) {
+          lastError = modelErr;
+          const errMsg = modelErr instanceof Error ? modelErr.message : String(modelErr);
+          const is503 = errMsg.includes('503') || errMsg.includes('high demand') || errMsg.includes('UNAVAILABLE');
+          const is429 = errMsg.includes('429') || errMsg.includes('RESOURCE_EXHAUSTED') || errMsg.includes('quota');
+
+          if (is503 && attempt === 0) {
+            console.warn(`[RAG] Model ${modelName} returned 503 high demand on attempt 1, waiting 600ms before retry...`);
+            await new Promise((resolve) => setTimeout(resolve, 600));
+            continue;
+          }
+
+          if (is429) {
+            // Immediate failover to candidate fallback model on quota limit without retry wait
+            console.warn(`[RAG] Model ${modelName} quota reached (429), immediately failing over to next candidate model.`);
+            break;
+          }
+
+          console.warn(`[RAG] Model ${modelName} attempt ${attempt + 1} failed: ${errMsg}`);
+          break; // Move to next candidate model
+        }
+      }
+
+      if (response && response.text) {
+        break;
+      }
+    }
+
+    if (!response || !response.text) {
+      throw lastError || new Error('All candidate Gemini models failed to respond.');
     }
 
     const answer = (response.text || '').trim();
