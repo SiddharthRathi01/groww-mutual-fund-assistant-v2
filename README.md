@@ -3,6 +3,10 @@
 ## Overview
 This repository contains **Groww Mutual Fund Assistant V2** (Prototype B). It is a facts-only mutual-fund FAQ assistant designed to provide verified, factual mutual-fund information for five HDFC Mutual Fund schemes. The assistant strictly adheres to regulatory and compliance boundaries and does not provide investment advice, fund recommendations, performance rankings, or return predictions.
 
+## Application
+
+[Open Groww Mutual Fund Assistant V2](https://groww-mutual-fund-assistant-v2.ai.studio)
+
 ### Prototypes Distinction
 - **Prototype A:** Groww Mutual Fund Assistant
 - **Prototype B:** Groww Mutual Fund Assistant V2
@@ -203,10 +207,6 @@ The following verification checks have been completed and tested:
 ## Disclaimer
 
 "Information is retrieved from verified HDFC Mutual Fund, SEBI and AMFI sources. This assistant provides factual information only and does not provide investment advice."
-
-## Prototype
-
-Prototype URL: To be published
 
 ## License
 
