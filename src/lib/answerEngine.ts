@@ -30,6 +30,9 @@ export function getExampleQuestions(): ExampleQuestion[] {
 const FALLBACK_NOT_FOUND_MESSAGE =
   "I couldn't find that fact in the verified sources currently available to me.";
 
+const NETWORK_ERROR_MESSAGE =
+  "I'm temporarily unable to retrieve a verified answer. Please check your connection and try again.";
+
 /**
  * Sends the user question and selected scheme context to the server-side
  * verified RAG endpoint (/api/answer), which queries Chroma Cloud (collection: hdfc-mf-facts)
@@ -56,7 +59,9 @@ export async function fetchAnswer(question: string, scheme: SchemeInfo): Promise
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
       return {
-        answer: errorData.answer || FALLBACK_NOT_FOUND_MESSAGE,
+        answer:
+          errorData.answer ||
+          "I'm temporarily unable to retrieve a verified answer. Please try again.",
         sourceUrl: scheme.sourceUrl,
         sourceName: 'HDFC Mutual Fund',
         isAnswered: false,
@@ -76,7 +81,7 @@ export async function fetchAnswer(question: string, scheme: SchemeInfo): Promise
   } catch (error) {
     console.error('[answerEngine] Error calling RAG backend:', error);
     return {
-      answer: FALLBACK_NOT_FOUND_MESSAGE,
+      answer: NETWORK_ERROR_MESSAGE,
       sourceUrl: scheme.sourceUrl,
       sourceName: 'HDFC Mutual Fund',
       isAnswered: false,

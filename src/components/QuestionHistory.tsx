@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { History, ExternalLink, FileText, ChevronRight, Inbox } from 'lucide-react';
+import { History, ExternalLink, FileText, ChevronRight, Inbox, AlertCircle, RefreshCw } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { fetchHistory, type HistoryEntry } from '@/lib/historyService';
 
@@ -21,20 +21,24 @@ export function QuestionHistory({ refreshKey }: { refreshKey: number }) {
   const { user } = useAuth();
   const [entries, setEntries] = useState<HistoryEntry[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [selected, setSelected] = useState<HistoryEntry | null>(null);
 
   const load = useCallback(async () => {
     if (!user) {
       setEntries([]);
       setLoading(false);
+      setLoadError(false);
       return;
     }
     setLoading(true);
+    setLoadError(false);
     try {
       const data = await fetchHistory();
       setEntries(data);
-    } catch {
-      setEntries([]);
+    } catch (err) {
+      console.warn('[QuestionHistory] fetchHistory failed safely:', err);
+      setLoadError(true);
     } finally {
       setLoading(false);
     }
@@ -63,6 +67,24 @@ export function QuestionHistory({ refreshKey }: { refreshKey: number }) {
           {[0, 1, 2].map((i) => (
             <div key={i} className="surface-2 rounded-lg h-12 animate-pulse" />
           ))}
+        </div>
+      ) : loadError ? (
+        <div className="flex flex-col items-center text-center py-6 px-2">
+          <div className="icon-box w-10 h-10 surface-2 border border-default mb-2.5 text-muted">
+            <AlertCircle size={18} strokeWidth={1.75} />
+          </div>
+          <p className="text-xs font-medium text-slate-700 dark:text-slate-300">
+            History temporarily unavailable
+          </p>
+          <p className="text-[11px] text-subtle mt-0.5">Your questions and answers are unaffected.</p>
+          <button
+            type="button"
+            onClick={load}
+            className="mt-3 inline-flex items-center gap-1.5 text-xs text-primary hover:underline font-medium cursor-pointer"
+          >
+            <RefreshCw size={12} />
+            Try again
+          </button>
         </div>
       ) : entries.length === 0 ? (
         <div className="flex flex-col items-center text-center py-8">

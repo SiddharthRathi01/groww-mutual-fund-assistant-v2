@@ -7,7 +7,7 @@ export function DisclaimerBanner() {
   return (
     <>
       <div className="card p-4 flex items-start gap-3 bg-surface-2">
-        <div className="icon-box w-8 h-8 icon-green mt-0.5">
+        <div className="icon-box w-8 h-8 icon-green dark:text-[#34D399] dark:bg-[#10B981]/15 dark:border-[#10B981]/30 mt-0.5">
           <Info size={15} strokeWidth={1.75} />
         </div>
         <div className="flex-1 min-w-0">
@@ -19,7 +19,7 @@ export function DisclaimerBanner() {
         </div>
         <button
           onClick={() => setOpen(true)}
-          className="text-sm text-primary font-medium hover:underline flex items-center gap-0.5 whitespace-nowrap flex-shrink-0 mt-0.5"
+          className="text-sm text-primary dark:text-[#34D399] font-medium hover:underline flex items-center gap-0.5 whitespace-nowrap flex-shrink-0 mt-0.5 cursor-pointer"
         >
           Learn more
           <ChevronRight size={14} />
@@ -55,21 +55,21 @@ function LearnMoreModal({ onClose }: { onClose: () => void }) {
         >
           <X size={18} />
         </button>
-        <div className="icon-box w-11 h-11 icon-green mb-4">
+        <div className="icon-box w-11 h-11 icon-green dark:text-[#34D399] dark:bg-[#10B981]/15 dark:border-[#10B981]/30 mb-4">
           <Info size={20} strokeWidth={1.75} />
         </div>
         <h3 className="text-base font-semibold mb-3">About this assistant</h3>
         <ul className="space-y-2.5 text-sm text-muted leading-relaxed">
           <li className="flex items-start gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
+            <span className="w-1.5 h-1.5 rounded-full bg-primary dark:bg-[#34D399] mt-1.5 flex-shrink-0" />
             The assistant provides factual information only, sourced from official documents.
           </li>
           <li className="flex items-start gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
+            <span className="w-1.5 h-1.5 rounded-full bg-primary dark:bg-[#34D399] mt-1.5 flex-shrink-0" />
             Information comes from official sources including HDFC Mutual Fund, SEBI, and AMFI.
           </li>
           <li className="flex items-start gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
+            <span className="w-1.5 h-1.5 rounded-full bg-primary dark:bg-[#34D399] mt-1.5 flex-shrink-0" />
             The assistant does not provide investment advice, recommendations, or personalized financial guidance.
           </li>
         </ul>

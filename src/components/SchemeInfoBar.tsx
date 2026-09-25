@@ -38,16 +38,23 @@ export function SchemeInfoBar({ scheme }: SchemeInfoBarProps) {
           </p>
         </div>
       </div>
-      <a
-        href={scheme.sourceUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-xs text-primary hover:underline flex items-center gap-1.5 surface-2 border border-default rounded-lg px-3 py-1.5 transition-colors hover:border-primary font-medium"
-      >
-        <FileText size={13} />
-        View factsheet
-        <ExternalLink size={11} className="opacity-60" />
-      </a>
+      {scheme.sourceUrl ? (
+        <a
+          href={scheme.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs text-primary dark:text-[#34D399] hover:underline flex items-center gap-1.5 surface-2 border border-default rounded-lg px-3 py-1.5 transition-colors hover:border-primary dark:hover:border-[#10B981] font-medium"
+        >
+          <FileText size={13} />
+          View factsheet
+          <ExternalLink size={11} className="opacity-60" />
+        </a>
+      ) : (
+        <span className="text-xs text-muted flex items-center gap-1.5 surface-2 border border-default rounded-lg px-3 py-1.5 opacity-60 font-medium">
+          <FileText size={13} />
+          Factsheet unavailable
+        </span>
+      )}
     </div>
   );
 }

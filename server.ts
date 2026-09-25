@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-import { handleRAGQuery } from './server/rag.js';
+import { handleRAGQuery } from './server/rag';
 
 const app = express();
 const PORT = 3000;
@@ -31,7 +31,7 @@ app.post('/api/answer', async (req, res) => {
   } catch (error) {
     console.error('[API] /api/answer handler failed:', error);
     return res.status(500).json({
-      answer: "I couldn't find that fact in the verified sources currently available to me.",
+      answer: "I'm temporarily unable to retrieve a verified answer. Please try again.",
       sourceUrl: req.body?.scheme?.sourceUrl || '',
       sourceName: 'HDFC Mutual Fund',
       isAnswered: false,

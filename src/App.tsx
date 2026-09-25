@@ -10,6 +10,7 @@ import { DisclaimerBanner } from '@/components/DisclaimerBanner';
 import { AuthModal } from '@/components/AuthModal';
 import { QuestionHistory } from '@/components/QuestionHistory';
 import { Footer } from '@/components/Footer';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 import type { SchemeInfo } from '@/data/schemes';
 
 function Dashboard() {
@@ -24,24 +25,38 @@ function Dashboard() {
 
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6">
         {/* 1. What is this? — Hero with side-by-side features */}
-        <Hero />
+        <ErrorBoundary fallbackTitle="Hero section error">
+          <Hero />
+        </ErrorBoundary>
 
         {/* 2. Ask your question — primary focal point */}
         {/* 3. Which scheme am I asking about? — scheme context */}
         <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-5 pb-6">
           {/* Left — scheme selector + question history */}
           <div className="space-y-4">
-            <SchemeSelector selected={selectedScheme} onSelect={setSelectedScheme} />
-            {user && <QuestionHistory refreshKey={historyRefresh} />}
+            <ErrorBoundary fallbackTitle="Scheme selector error">
+              <SchemeSelector selected={selectedScheme} onSelect={setSelectedScheme} />
+            </ErrorBoundary>
+            {user && (
+              <ErrorBoundary fallbackTitle="History display error">
+                <QuestionHistory refreshKey={historyRefresh} />
+              </ErrorBoundary>
+            )}
           </div>
 
           {/* Right — assistant area */}
           <div className="space-y-4">
-            {selectedScheme && <SchemeInfoBar scheme={selectedScheme} />}
-            <ChatInterface
-              selectedScheme={selectedScheme}
-              onHistorySaved={() => setHistoryRefresh((n) => n + 1)}
-            />
+            {selectedScheme && (
+              <ErrorBoundary fallbackTitle="Scheme info error">
+                <SchemeInfoBar scheme={selectedScheme} />
+              </ErrorBoundary>
+            )}
+            <ErrorBoundary fallbackTitle="Chat interface error">
+              <ChatInterface
+                selectedScheme={selectedScheme}
+                onHistorySaved={() => setHistoryRefresh((n) => n + 1)}
+              />
+            </ErrorBoundary>
           </div>
         </div>
 

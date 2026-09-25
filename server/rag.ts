@@ -17,30 +17,52 @@ export interface SchemeQueryContext {
   sourceUrl?: string;
 }
 
+const FACTUAL_OBJECTIVE_PATTERNS = [
+  /\binvestment\s+objective\b/i,
+  /\bobjective\s+of\b/i,
+  /\binvestment\s+strategy\b/i,
+  /\bstrategy\s+of\b/i,
+];
+
 const ADVICE_KEYWORDS = [
   'best fund',
-  'which fund is best',
+  'best mutual fund',
+  'best scheme',
+  'top scheme',
+  'top fund',
+  'safest fund',
+  'safest scheme',
   'highest return',
   'highest returns',
-  'safest fund',
+  'maximum return',
+  'maximum returns',
   'should i invest',
   'should i buy',
   'should i choose',
+  'should i switch',
+  'should i stop',
   'which fund should',
+  'which mutual fund should',
+  'which scheme should',
   'recommend',
   'recommendation',
+  'recommendations',
+  'recommending',
   'rank',
   'ranking',
+  'rankings',
   'predict',
   'prediction',
   'which is better',
-  'compare funds',
+  'which is the best',
+  'which fund is best',
+  'which mutual fund is best',
   'which scheme is best',
-  'best scheme',
-  'top scheme',
+  'compare funds',
   'which to invest',
   'investment advice',
   'financial advice',
+  'portfolio advice',
   'give advice',
   'provide advice',
   'offer advice',
@@ -53,26 +75,75 @@ const ADVICE_KEYWORDS = [
 ];
 
 const ADVICE_PATTERNS = [
-  /\binvestment\s+advice\b/i,
-  /\bfinancial\s+advice\b/i,
-  /\badvise\s+(?:me|us|someone|investors?)\b/i,
-  /\badvise\s+on\b/i,
+  // 1. Generic advice requests
+  /\b(?:investment|financial|portfolio)\s+advice\b/i,
+  /\badvise\s+(?:me|us|someone|investors?|on)\b/i,
   /\b(?:can|could|will|would|do)\s+you\s+advise\b/i,
   /\b(?:give|giving|provide|providing|offer|offering)\s+(?:any\s+|some\s+|me\s+)?(?:investment\s+|financial\s+)?advice\b/i,
   /\b(?:any|need|want|seeking|get)\s+(?:investment\s+|financial\s+)?advice\b/i,
   /\bwhat\s+(?:investment\s+|financial\s+)?advice\b/i,
   /\badvice\s+(?:on|about|regarding)\b/i,
+
+  // 2. Direct recommendation / selection
+  /\brecommend(?:ation|ed|ing|s)?\b/i,
+  /\bwhat\s+(?:would|do)\s+you\s+(?:recommend|choose|suggest|pick)\b/i,
+  /\b(?:which|what)\s+(?:mutual\s+)?(?:fund|scheme|one)\s+(?:should|do|would|to|can)\s+(?:i|we|you)\s+(?:buy|invest|choose|pick|select|switch|start\s+with)\b/i,
+  /\b(?:which|what)\s+(?:mutual\s+)?(?:fund|scheme)\s+(?:do\s+you|would\s+you)\s+recommend\b/i,
+  /\b(?:which|what)\s+(?:mutual\s+)?(?:fund|scheme|one)\s+should\s+i\b/i,
+  /\bwhich\s+(?:fund|scheme|mutual\s+fund|hdfc\s+fund|hdfc\s+scheme)\s+to\s+(?:invest|buy|choose|pick|start\s+with)\b/i,
+  /\bwhat\s+should\s+i\s+(?:invest\s+in|buy|choose|pick|select|do\s+with\s+my\s+investment)\b/i,
+  /\bwhere\s+should\s+i\s+(?:invest|put\s+my\s+money)\b/i,
+  /\bshould\s+i\s+(?:invest|buy|choose|pick|select|switch|stop\s+investing|invest\s+more|sell|redeem|put)\b/i,
+  /\b(?:help|tell)\s+me\s+(?:to\s+)?(?:pick|choose|select|buy|invest\s+in|decide)\b/i,
+  /\b(?:can\s+you|could\s+you)\s+(?:pick|choose|select)\s+a\s+(?:fund|scheme)\b/i,
+
+  // 3. "Best" / Safest / Comparison / Ranking
+  /\bwhich\s+(?:(?:mutual\s+)?fund|scheme|one|hdfc\s+(?:mutual\s+)?fund|hdfc\s+scheme)\s+(?:is|are)\s+(?:the\s+)?(?:best|better|top|safest|suitable|ideal|good)\b/i,
+  /\bwhat\s+is\s+the\s+best\s+(?:hdfc\s+)?(?:mutual\s+)?(?:fund|scheme)\b/i,
+  /\bwhich\s+is\s+(?:the\s+)?best\s+(?:mutual\s+)?(?:fund|scheme)\b/i,
+  /\bbest\s+(?:mutual\s+)?(?:fund|scheme|funds|schemes)\b/i,
+  /\b(?:top|safest)\s+(?:mutual\s+)?(?:fund|scheme|funds|schemes)\b/i,
+  /\bwhich\s+(?:fund|scheme|one)\s+is\s+safest\b/i,
+  /\bwhich\s+is\s+better\b/i,
+  /\b(?:better|safer)\s+than\b/i,
+  /\brank\s+(?:these|the|all)?\s*(?:mutual\s+)?(?:funds|schemes)\b/i,
+  /\branking\s+(?:from\s+best\s+to\s+worst|of\s+(?:these\s+)?funds)\b/i,
+  /\bfrom\s+best\s+to\s+worst\b/i,
+  /\bcompare\s+(?:these|the)?\s*funds\s+and\s+tell\s+me\s+which\b/i,
+
+  // 4. Return-seeking advice & predictions
+  /\b(?:highest|maximum|max|greatest|more|higher)\s+returns?\b/i,
+  /\b(?:will|to)\s+give\s+(?:me\s+)?(?:the\s+)?(?:highest|maximum|max|better|best)\s+returns?\b/i,
+  /\b(?:will|to)\s+perform\s+best\b/i,
+  /\bpredict\s+(?:the\s+)?(?:best|returns?|future|performance)\b/i,
+  /\bprediction\b/i,
+
+  // 5. Personalized advice & risk profile
+  /\b(?:suitable|right|best|ideal|good)\s+for\s+(?:my\s+risk\s+profile|me|my\s+portfolio|retirement)\b/i,
+  /\brisk\s+profile\b/i,
+  /\b(?:i\s+am|i'm)\s+\d+\s*(?:years?\s+old|yo)?.*(?:which|should|what|where)\b/i,
+  /\b(?:i\s+have|with)\s*(?:₹|rs\.?|inr)?\s*\d+.*(?:which|should|what|where)\b/i,
+  /\bwhat\s+should\s+i\s+invest\s+in\s+for\s+retirement\b/i,
+
+  // 6. Switching & Money allocation
+  /\bswitch\s+(?:from|to|between)\b/i,
+  /\b(?:divide|allocate|distribute|split)\s+(?:my|the)?\s*money\b/i,
+  /\b(?:asset\s+)?allocation\s+advice\b/i,
+  /\bhow\s+should\s+i\s+(?:divide|split|allocate)\b/i,
 ];
 
 export function isAdviceQuestion(question: string): boolean {
   const q = question.toLowerCase();
 
-  // Explicit safety check: questions about objective/strategy are always factual
+  // Explicit safety check: questions about objective/strategy are always factual unless explicitly asking for advice/recommendation
+  const isPureObjectiveQuery = FACTUAL_OBJECTIVE_PATTERNS.some((p) => p.test(question));
   if (
-    q.includes('investment objective') ||
-    q.includes('objective of') ||
-    q.includes('investment strategy') ||
-    q.includes('strategy of')
+    isPureObjectiveQuery &&
+    !q.includes('should i') &&
+    !q.includes('recommend') &&
+    !q.includes('which fund is best') &&
+    !q.includes('which mutual fund is best') &&
+    !q.includes('advise')
   ) {
     return false;
   }
@@ -122,6 +193,12 @@ function getGeminiClient(): GoogleGenAI | null {
 const FALLBACK_NOT_FOUND_MESSAGE =
   "I couldn't find that fact in the verified sources currently available to me.";
 
+const SERVICE_UNAVAILABLE_MESSAGE =
+  "I'm temporarily unable to retrieve a verified answer. Please try again.";
+
+const GENERATION_UNAVAILABLE_MESSAGE =
+  "I'm temporarily unable to generate a verified answer. Please try again.";
+
 export async function handleRAGQuery(
   question: string,
   scheme?: SchemeQueryContext
@@ -145,7 +222,7 @@ export async function handleRAGQuery(
   if (!chroma) {
     console.warn('[RAG] CHROMA_API_KEY environment variable is not configured.');
     return {
-      answer: FALLBACK_NOT_FOUND_MESSAGE,
+      answer: SERVICE_UNAVAILABLE_MESSAGE,
       sourceUrl: scheme?.sourceUrl || '',
       sourceName: 'HDFC Mutual Fund',
       isAnswered: false,
@@ -155,43 +232,57 @@ export async function handleRAGQuery(
 
   let retrievedDocs: string[] = [];
   let retrievedMetas: Record<string, unknown>[] = [];
+  let chromaError: unknown = null;
 
-  try {
-    const collection = await chroma.getCollection({ name: collectionName });
-    const queryText = scheme?.name ? `${scheme.name}: ${question}` : question;
+  // Attempt Chroma query with 1 safe retry on transient failure
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const collection = await chroma.getCollection({ name: collectionName });
+      const queryText = scheme?.name ? `${scheme.name}: ${question}` : question;
 
-    let queryResult;
-    if (scheme?.name) {
-      try {
+      let queryResult;
+      if (scheme?.name) {
+        try {
+          queryResult = await collection.query({
+            queryTexts: [question],
+            where: { scheme_or_scope: scheme.name },
+            nResults: 8,
+          });
+        } catch {
+          queryResult = null;
+        }
+      }
+
+      // Fallback to broader query if scheme-filtered query yielded no documents
+      if (!queryResult || !queryResult.documents?.[0] || queryResult.documents[0].length === 0) {
         queryResult = await collection.query({
-          queryTexts: [question],
-          where: { scheme_or_scope: scheme.name },
+          queryTexts: [queryText],
           nResults: 8,
         });
-      } catch {
-        queryResult = null;
+      }
+
+      const docs = (queryResult.documents?.[0] || []).filter(
+        (d): d is string => typeof d === 'string' && d.trim().length > 0
+      );
+      const metas = (queryResult.metadatas?.[0] || []) as Record<string, unknown>[];
+
+      retrievedDocs = docs;
+      retrievedMetas = metas;
+      chromaError = null;
+      break;
+    } catch (err) {
+      chromaError = err;
+      console.warn(`[RAG] Chroma query attempt ${attempt + 1} failed:`, err);
+      if (attempt === 0) {
+        await new Promise((resolve) => setTimeout(resolve, 400));
       }
     }
+  }
 
-    // Fallback to broader query if scheme-filtered query yielded no documents
-    if (!queryResult || !queryResult.documents?.[0] || queryResult.documents[0].length === 0) {
-      queryResult = await collection.query({
-        queryTexts: [queryText],
-        nResults: 8,
-      });
-    }
-
-    const docs = (queryResult.documents?.[0] || []).filter(
-      (d): d is string => typeof d === 'string' && d.trim().length > 0
-    );
-    const metas = (queryResult.metadatas?.[0] || []) as Record<string, unknown>[];
-
-    retrievedDocs = docs;
-    retrievedMetas = metas;
-  } catch (err) {
-    console.error('[RAG] Error querying Chroma collection:', err);
+  if (chromaError) {
+    console.error('[RAG] Error querying Chroma collection after retry:', chromaError);
     return {
-      answer: FALLBACK_NOT_FOUND_MESSAGE,
+      answer: SERVICE_UNAVAILABLE_MESSAGE,
       sourceUrl: scheme?.sourceUrl || '',
       sourceName: 'HDFC Mutual Fund',
       isAnswered: false,
@@ -286,6 +377,8 @@ Answer:`;
   try {
     // Ordered to prefer resilient models with available quota first
     const candidateModels = [
+      'gemini-3.5-flash-lite',
+      'gemini-flash-lite-latest',
       'gemini-3.1-flash-lite',
       'gemini-3.8-flash',
       'gemini-flash-latest',
@@ -365,7 +458,7 @@ Answer:`;
   } catch (err) {
     console.error('[RAG] Error calling Gemini API:', err);
     return {
-      answer: FALLBACK_NOT_FOUND_MESSAGE,
+      answer: GENERATION_UNAVAILABLE_MESSAGE,
       sourceUrl,
       sourceName,
       lastUpdated,

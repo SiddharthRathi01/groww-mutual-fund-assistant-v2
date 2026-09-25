@@ -48,12 +48,12 @@ export function SchemeSelector({ selected, onSelect }: SchemeSelectorProps) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search among 5 schemes..."
-          className="w-full surface-2 border border-default rounded-lg pl-10 pr-9 py-2.5 text-sm outline-none focus:border-primary transition-colors"
+          className="w-full surface-2 border border-default rounded-lg pl-10 pr-9 py-2.5 text-sm outline-none focus:border-primary dark:focus:border-[#10B981] dark:focus:ring-1 dark:focus:ring-[#10B981]/25 transition-all"
         />
         {query && (
           <button
             onClick={() => setQuery('')}
-            className="absolute right-2.5 top-1/2 -translate-y-1/2 text-subtle hover:text-primary transition-colors"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 text-subtle hover:text-primary dark:hover:text-[#34D399] transition-colors"
           >
             <X size={15} />
           </button>
@@ -74,7 +74,7 @@ export function SchemeSelector({ selected, onSelect }: SchemeSelectorProps) {
                 onClick={() => onSelect(scheme)}
                 className={`w-full text-left rounded-lg px-3 py-2.5 transition-all border flex items-center gap-3 ${
                   isActive
-                    ? 'bg-primary-soft border-primary'
+                    ? 'bg-primary-soft border-primary dark:bg-[#10B981]/[0.08] dark:border-[#10B981]'
                     : 'border-transparent hover:surface-2 hover:border-default'
                 }`}
               >
@@ -83,7 +83,9 @@ export function SchemeSelector({ selected, onSelect }: SchemeSelectorProps) {
                 </div>
                 <div className="min-w-0 flex-1">
                   <p
-                    className={`text-sm font-medium truncate ${isActive ? 'text-primary' : ''}`}
+                    className={`text-sm font-medium truncate ${
+                      isActive ? 'text-primary dark:text-[#34D399]' : ''
+                    }`}
                   >
                     {scheme.name}
                   </p>
