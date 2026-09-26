@@ -1,15 +1,15 @@
 # Sample Q&A — Groww Mutual Fund Assistant V2
 
-This sample set (8 questions) demonstrates the factual precision, NAV retrieval, source attribution, controlled fallback, and advice guardrails of the assistant.
+This sample set (8 questions) demonstrates the broad factual capabilities, NAV retrieval, source attribution, controlled fallback, and advice guardrails of the assistant across 8 distinct categories.
 
 ---
 
-### Question 1 (NAV — Large Cap)
+### Question 1 (NAV)
 **User:**
-What is the NAV for HDFC Large Cap Fund?
+What is the current NAV of HDFC Large Cap Fund?
 
 **Assistant:**
-The NAV of HDFC Large Cap Fund - Direct Plan - Growth Option was ₹1,189.079 as of 25 Sep 2026.
+The NAV of HDFC Large Cap Fund (Direct Plan - Growth Option) was ₹1,189.079 as of 25 Sep 2026.
 
 **Source Attribution:**
 - Source: HDFC Mutual Fund - NAV & IDCW
@@ -18,92 +18,91 @@ The NAV of HDFC Large Cap Fund - Direct Plan - Growth Option was ₹1,189.079 as
 
 ---
 
-### Question 2 (NAV — Flexi Cap)
+### Question 2 (Investment Objective)
 **User:**
-What is the NAV for HDFC Flexi Cap Fund?
+What is the investment objective of HDFC Flexi Cap Fund?
 
 **Assistant:**
-The NAV of HDFC Flexi Cap Fund - Direct Plan - Growth Option was ₹2,214.572 as of 25 Sep 2026.
-
-**Source Attribution:**
-- Source: HDFC Mutual Fund - NAV & IDCW
-- URL: `https://www.hdfcfund.com/nav-and-idcw`
-- Last Updated: 2026-09-25
-
----
-
-### Question 3 (NAV — ELSS Tax Saver)
-**User:**
-What is the NAV for HDFC ELSS Tax Saver?
-
-**Assistant:**
-The NAV of HDFC ELSS - Tax Saver Fund - Direct Plan - Growth Option was ₹1,447.383 as of 25 Sep 2026.
-
-**Source Attribution:**
-- Source: HDFC Mutual Fund - NAV & IDCW
-- URL: `https://www.hdfcfund.com/nav-and-idcw`
-- Last Updated: 2026-09-25
-
----
-
-### Question 4 (Factual Objective — Large Cap)
-**User:**
-What is the investment objective of HDFC Large Cap Fund?
-
-**Assistant:**
-The investment objective of HDFC Large Cap Fund is to provide long-term capital appreciation by investing predominantly in Large-Cap companies.
+The investment objective of HDFC Flexi Cap Fund is to generate capital appreciation / income from a portfolio predominantly invested in equity and equity related instruments.
 
 **Source Attribution:**
 - Source: HDFC KIM
-- URL: `https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Large%20Cap%20Fund%20dated%20November%2021%2C%202025_0.pdf`
+- URL: `https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Flexi%20Cap%20Fund%20dated%20November%2021%2C%202025_1.pdf`
 - Last Updated: 2025-11-21
 
 ---
 
-### Question 5 (Factual Benchmark — Mid Cap)
+### Question 3 (Fund Manager)
 **User:**
-What is the benchmark of HDFC Mid Cap Fund?
+Who is the fund manager of HDFC Mid Cap Fund?
 
 **Assistant:**
-The benchmark of HDFC Mid Cap Fund is the NIFTY MIDCAP 150 Total Return Index (TRI).
+The fund managers of HDFC Mid Cap Fund are Mr. Chirag Setalvad and Mr. Dhruv Muchhal.
 
 **Source Attribution:**
-- Source: HDFC KIM
-- URL: `https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Mid%20Cap%20Fund%20dated%20November%2021%2C%202025_1.pdf`
+- Source: HDFC scheme page
+- URL: `https://www.hdfcfund.com/explore/mutual-funds/hdfc-mid-cap-fund/direct`
 
 ---
 
-### Question 6 (Factual Lock-In — ELSS)
+### Question 4 (Benchmark)
 **User:**
-What is the lock-in period of HDFC ELSS Tax Saver?
+What benchmark does HDFC Balanced Advantage Fund use?
 
 **Assistant:**
-HDFC ELSS Tax Saver has a statutory lock-in period of 3 years from the date of allotment.
+HDFC Balanced Advantage Fund uses the NIFTY 50 Hybrid Composite Debt 50:50 Index as its benchmark.
 
 **Source Attribution:**
-- Source: HDFC KIM
-- URL: `https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20ELSS%20Tax%20Saver%20dated%20November%2021%2C%202025_0.pdf`
+- Source: HDFC scheme page
+- URL: `https://www.hdfcfund.com/explore/mutual-funds/hdfc-balanced-advantage-fund/direct`
 
 ---
 
-### Question 7 (Controlled Fallback — Unsupported Fact)
+### Question 5 (Exit Load)
 **User:**
-What is the NAV of HDFC Large Cap Fund Regular IDCW Plan?
+Does HDFC ELSS Tax Saver have an exit load?
+
+**Assistant:**
+HDFC ELSS Tax Saver has an exit load of NIL. (Statutory lock-in period of 3 years applies from the date of allotment).
+
+**Source Attribution:**
+- Source: HDFC ELSS Tax Saver Fund official scheme page
+- URL: `https://www.hdfcfund.com/explore/mutual-funds/hdfc-elss-tax-saver-fund/direct`
+
+---
+
+### Question 6 (Riskometer)
+**User:**
+What is the riskometer rating of HDFC Mid Cap Fund?
+
+**Assistant:**
+The riskometer rating of HDFC Mid Cap Fund is Very High.
+
+**Source Attribution:**
+- Source: HDFC scheme page
+- URL: `https://www.hdfcfund.com/explore/mutual-funds/hdfc-mid-cap-fund/direct`
+
+---
+
+### Question 7 (Unsupported / Future Return)
+**User:**
+What return will HDFC Large Cap Fund give next year?
 
 **Assistant:**
 I couldn't find that fact in the verified sources currently available to me.
 
 **Behavior:**
-Controlled fallback; does not speculate or hallucinate unverified plans.
+Controlled fallback; does not speculate, predict future returns, or hallucinate numbers.
 
 ---
 
-### Question 8 (Advice Guardrail Refusal)
+### Question 8 (Investment Advice Refusal)
 **User:**
-Which mutual fund is best for me to invest in for maximum returns?
+Which HDFC mutual fund should I invest in?
 
 **Assistant:**
 I can provide factual information about these schemes, but I can't recommend or rank funds or provide investment advice.
 
 **Behavior:**
-Immediate refusal triggered deterministically before vector search and LLM generation.
+Immediate advice refusal triggered deterministically before vector search and LLM generation.
+

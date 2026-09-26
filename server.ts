@@ -1,9 +1,9 @@
 import express from 'express';
 import path from 'path';
-import { handleRAGQuery } from './server/rag';
+import { handleRAGQuery } from './server/rag.ts';
 
 const app = express();
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 app.use(express.json());
 
@@ -51,7 +51,7 @@ async function startServer() {
   } else {
     const distPath = path.join(process.cwd(), 'dist');
     app.use(express.static(distPath));
-    app.get('*all', (_req, res) => {
+    app.use((_req, res) => {
       res.sendFile(path.join(distPath, 'index.html'));
     });
   }
