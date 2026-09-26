@@ -22,6 +22,8 @@ const FACTUAL_OBJECTIVE_PATTERNS = [
   /\bobjective\s+of\b/i,
   /\binvestment\s+strategy\b/i,
   /\bstrategy\s+of\b/i,
+  /\bnav\b/i,
+  /\bnet\s+asset\s+value\b/i,
 ];
 
 const ADVICE_KEYWORDS = [
@@ -308,8 +310,19 @@ export async function handleRAGQuery(
   const qLower = question.toLowerCase();
   const matchingMeta = retrievedMetas.find((meta) => {
     if (!meta) return false;
-    const ft = String(meta.fact_type || '').toLowerCase();
-    return ft && qLower.includes(ft);
+    const rawFt = String(meta.fact_type || '').toLowerCase();
+    const ftWithSpaces = rawFt.replace(/_/g, ' ');
+    if (qLower.includes(rawFt) || qLower.includes(ftWithSpaces)) return true;
+    if (rawFt === 'nav' && (qLower.includes('net asset value') || /\bnav\b/i.test(question))) return true;
+    if (rawFt === 'current_ter' && (qLower.includes('ter') || qLower.includes('expense ratio'))) return true;
+    if (rawFt === 'minimum_sip' && (qLower.includes('sip') || qLower.includes('minimum'))) return true;
+    if (rawFt === 'exit_load' && (qLower.includes('exit load') || qLower.includes('load'))) return true;
+    if (rawFt === 'lock_in' && (qLower.includes('lock in') || qLower.includes('lock-in'))) return true;
+    if (rawFt === 'fund_manager' && (qLower.includes('manager') || qLower.includes('manages'))) return true;
+    if (rawFt === 'objective' && (qLower.includes('objective') || qLower.includes('strategy'))) return true;
+    if (rawFt === 'benchmark' && qLower.includes('benchmark')) return true;
+    if (rawFt === 'riskometer' && (qLower.includes('risk') || qLower.includes('riskometer'))) return true;
+    return false;
   }) || retrievedMetas[0];
 
   if (matchingMeta) {
@@ -364,6 +377,7 @@ Strict Response Guidelines:
 - Maximum 3 sentences.
 - Factual and concise only.
 - Do not provide investment advice, fund recommendations, rankings, or return predictions.
+- For NAV inquiries, specify the exact plan (Direct Plan - Growth Option) and as-of date (25 Sep 2026) as stated in the verified context. Never claim the NAV is live, real-time, or today's.
 - If the fact is not in the context, do not speculate.`;
 
   const prompt = `Selected Scheme: ${scheme?.name || 'HDFC Mutual Fund'} (Category: ${scheme?.category || 'General'})

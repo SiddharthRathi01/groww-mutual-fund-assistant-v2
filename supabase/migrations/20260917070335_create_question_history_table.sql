@@ -26,7 +26,7 @@ asked, the factual answer returned, the source URL cited, and a timestamp.
 ## Notes
 1. No financial personal information (PAN, folio, bank, holdings, transactions) is stored.
 2. Users can only access their own question history — never other users' rows.
-3. Schema is intentionally minimal for this prototype.
+3. Schema is intentionally minimal for this application.
 */
 
 CREATE TABLE IF NOT EXISTS question_history (

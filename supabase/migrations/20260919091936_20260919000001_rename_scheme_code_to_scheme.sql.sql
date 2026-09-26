@@ -2,7 +2,7 @@
 # Rename question_history.scheme_code to scheme
 
 ## Purpose
-Aligns the column name with the required schema spec for Prototype B.
+Aligns the column name with the required schema spec for Groww Mutual Fund Assistant V2.
 The existing column `scheme_code` is renamed to `scheme`. No data is lost —
 existing rows keep their values. No other columns, constraints, or policies
 are changed.

@@ -1,0 +1,690 @@
+[
+  {
+    "chunk_id": "RAG001",
+    "document": "To provide long-term capital appreciation by investing predominantly in Large-Cap companies.",
+    "metadata": {
+      "fact_type": "objective",
+      "document_date_or_freshness": "2025-11-21",
+      "freshness_class": "stable",
+      "source_url": "https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Large%20Cap%20Fund%20dated%20November%2021%2C%202025_0.pdf",
+      "chunk_id": "RAG001",
+      "scheme_or_scope": "HDFC Large Cap Fund",
+      "source_id": "6",
+      "source_name": "HDFC KIM"
+    }
+  },
+  {
+    "chunk_id": "RAG002",
+    "document": "NIFTY 100 Total Return Index (TRI).",
+    "metadata": {
+      "source_id": "1",
+      "source_name": "HDFC scheme page",
+      "freshness_class": "medium",
+      "document_date_or_freshness": "current",
+      "chunk_id": "RAG002",
+      "fact_type": "benchmark",
+      "scheme_or_scope": "HDFC Large Cap Fund",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-large-cap-fund/regular"
+    }
+  },
+  {
+    "chunk_id": "RAG003",
+    "document": "₹100.",
+    "metadata": {
+      "scheme_or_scope": "HDFC Large Cap Fund",
+      "fact_type": "minimum_sip",
+      "chunk_id": "RAG003",
+      "source_id": "1",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-large-cap-fund/regular",
+      "freshness_class": "dynamic",
+      "source_name": "HDFC scheme page",
+      "document_date_or_freshness": "current"
+    }
+  },
+  {
+    "chunk_id": "RAG004",
+    "document": "Very High.",
+    "metadata": {
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-large-cap-fund/regular",
+      "document_date_or_freshness": "current",
+      "source_name": "HDFC scheme page",
+      "fact_type": "riskometer",
+      "scheme_or_scope": "HDFC Large Cap Fund",
+      "freshness_class": "dynamic",
+      "chunk_id": "RAG004",
+      "source_id": "1"
+    }
+  },
+  {
+    "chunk_id": "RAG005",
+    "document": "Mr. Rahul Baijal; Mr. Dhruv Muchhal.",
+    "metadata": {
+      "freshness_class": "medium",
+      "chunk_id": "RAG005",
+      "fact_type": "fund_manager",
+      "scheme_or_scope": "HDFC Large Cap Fund",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-large-cap-fund/regular",
+      "source_id": "1",
+      "source_name": "HDFC scheme page",
+      "document_date_or_freshness": "current"
+    }
+  },
+  {
+    "chunk_id": "RAG006",
+    "document": "1.00% if units are redeemed/switched out within 1 year from allotment.",
+    "metadata": {
+      "scheme_or_scope": "HDFC Large Cap Fund",
+      "source_name": "HDFC scheme page",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-large-cap-fund/regular",
+      "source_id": "1",
+      "fact_type": "exit_load",
+      "freshness_class": "dynamic",
+      "document_date_or_freshness": "current",
+      "chunk_id": "RAG006"
+    }
+  },
+  {
+    "chunk_id": "RAG007",
+    "document": "To generate capital appreciation / income from a portfolio predominantly invested in equity and equity related instruments.",
+    "metadata": {
+      "source_name": "HDFC KIM",
+      "freshness_class": "stable",
+      "source_id": "7",
+      "document_date_or_freshness": "2025-11-21",
+      "scheme_or_scope": "HDFC Flexi Cap Fund",
+      "chunk_id": "RAG007",
+      "fact_type": "objective",
+      "source_url": "https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Flexi%20Cap%20Fund%20dated%20November%2021%2C%202025_1.pdf"
+    }
+  },
+  {
+    "chunk_id": "RAG008",
+    "document": "NIFTY 500 Total Returns Index (TRI).",
+    "metadata": {
+      "source_id": "2",
+      "source_name": "HDFC scheme page",
+      "fact_type": "benchmark",
+      "chunk_id": "RAG008",
+      "freshness_class": "medium",
+      "document_date_or_freshness": "current",
+      "scheme_or_scope": "HDFC Flexi Cap Fund",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-flexi-cap-fund/direct"
+    }
+  },
+  {
+    "chunk_id": "RAG009",
+    "document": "₹100.",
+    "metadata": {
+      "source_id": "2",
+      "document_date_or_freshness": "current",
+      "scheme_or_scope": "HDFC Flexi Cap Fund",
+      "source_name": "HDFC scheme page",
+      "freshness_class": "dynamic",
+      "fact_type": "minimum_sip",
+      "chunk_id": "RAG009",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-flexi-cap-fund/direct"
+    }
+  },
+  {
+    "chunk_id": "RAG010",
+    "document": "Very High.",
+    "metadata": {
+      "scheme_or_scope": "HDFC Flexi Cap Fund",
+      "document_date_or_freshness": "current",
+      "source_name": "HDFC scheme page",
+      "chunk_id": "RAG010",
+      "source_id": "2",
+      "fact_type": "riskometer",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-flexi-cap-fund/direct",
+      "freshness_class": "dynamic"
+    }
+  },
+  {
+    "chunk_id": "RAG011",
+    "document": "1.00% if units are redeemed/switched out within 1 year from allotment; no exit load after 1 year.",
+    "metadata": {
+      "scheme_or_scope": "HDFC Flexi Cap Fund",
+      "chunk_id": "RAG011",
+      "fact_type": "exit_load",
+      "source_id": "2",
+      "document_date_or_freshness": "current",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-flexi-cap-fund/direct",
+      "freshness_class": "dynamic",
+      "source_name": "HDFC scheme page"
+    }
+  },
+  {
+    "chunk_id": "RAG012",
+    "document": "To generate capital appreciation / income from a portfolio comprising predominantly of equity and equity related instruments.",
+    "metadata": {
+      "source_url": "https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20ELSS%20Tax%20Saver%20dated%20November%2021%2C%202025_0.pdf",
+      "chunk_id": "RAG012",
+      "source_id": "8",
+      "source_name": "HDFC KIM",
+      "fact_type": "objective",
+      "freshness_class": "stable",
+      "scheme_or_scope": "HDFC ELSS Tax Saver",
+      "document_date_or_freshness": "2025-11-21"
+    }
+  },
+  {
+    "chunk_id": "RAG013",
+    "document": "Statutory lock-in of 3 years.",
+    "metadata": {
+      "scheme_or_scope": "HDFC ELSS Tax Saver",
+      "chunk_id": "RAG013",
+      "source_id": "8",
+      "source_url": "https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20ELSS%20Tax%20Saver%20dated%20November%2021%2C%202025_0.pdf",
+      "source_name": "HDFC KIM",
+      "document_date_or_freshness": "2025-11-21",
+      "fact_type": "lock_in",
+      "freshness_class": "stable"
+    }
+  },
+  {
+    "chunk_id": "RAG014",
+    "document": "HDFC ELSS Tax Saver riskometer rating: Very High.",
+    "metadata": {
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-elss-tax-saver-fund/direct",
+      "chunk_id": "RAG014",
+      "scheme_or_scope": "HDFC ELSS Tax Saver",
+      "fact_type": "riskometer",
+      "freshness_class": "dynamic",
+      "document_date_or_freshness": "current",
+      "source_id": "3",
+      "source_name": "HDFC scheme page"
+    }
+  },
+  {
+    "chunk_id": "RAG015",
+    "document": "₹500.",
+    "metadata": {
+      "source_id": "3",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-elss-tax-saver-fund/direct",
+      "freshness_class": "dynamic",
+      "scheme_or_scope": "HDFC ELSS Tax Saver",
+      "source_name": "HDFC scheme page",
+      "chunk_id": "RAG015",
+      "fact_type": "minimum_sip",
+      "document_date_or_freshness": "current"
+    }
+  },
+  {
+    "chunk_id": "RAG016",
+    "document": "NIFTY 500 Total Returns Index (TRI).",
+    "metadata": {
+      "source_name": "HDFC scheme page",
+      "document_date_or_freshness": "current",
+      "source_id": "3",
+      "scheme_or_scope": "HDFC ELSS Tax Saver",
+      "chunk_id": "RAG016",
+      "freshness_class": "medium",
+      "fact_type": "benchmark",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-elss-tax-saver-fund/direct"
+    }
+  },
+  {
+    "chunk_id": "RAG017",
+    "document": "Scheme page currently displays TER of 1.20; the dedicated current TER report remains the preferred production source for this dynamic fact.",
+    "metadata": {
+      "source_id": "3,16",
+      "fact_type": "current_ter",
+      "source_url": "https://www.hdfcfund.com/statutory-disclosure/total-expense-ratio-of-mutual-fund-schemes/reports",
+      "chunk_id": "RAG017",
+      "freshness_class": "very_high",
+      "scheme_or_scope": "HDFC ELSS Tax Saver",
+      "document_date_or_freshness": "current",
+      "source_name": "HDFC scheme page + TER report"
+    }
+  },
+  {
+    "chunk_id": "RAG018",
+    "document": "To provide long-term capital appreciation/income by investing predominantly in Mid-Cap companies.",
+    "metadata": {
+      "source_url": "https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Mid%20Cap%20Fund%20dated%20November%2021%2C%202025_1.pdf",
+      "freshness_class": "stable",
+      "fact_type": "objective",
+      "source_name": "HDFC KIM",
+      "source_id": "9",
+      "chunk_id": "RAG018",
+      "document_date_or_freshness": "2025-11-21",
+      "scheme_or_scope": "HDFC Mid Cap Fund"
+    }
+  },
+  {
+    "chunk_id": "RAG019",
+    "document": "NIFTY MIDCAP 150 Total Return Index (TRI).",
+    "metadata": {
+      "source_name": "HDFC KIM",
+      "scheme_or_scope": "HDFC Mid Cap Fund",
+      "chunk_id": "RAG019",
+      "document_date_or_freshness": "2025-11-21",
+      "source_url": "https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Mid%20Cap%20Fund%20dated%20November%2021%2C%202025_1.pdf",
+      "fact_type": "benchmark",
+      "freshness_class": "medium",
+      "source_id": "9"
+    }
+  },
+  {
+    "chunk_id": "RAG020",
+    "document": "₹100.",
+    "metadata": {
+      "chunk_id": "RAG020",
+      "scheme_or_scope": "HDFC Mid Cap Fund",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-mid-cap-fund/direct",
+      "source_id": "4",
+      "document_date_or_freshness": "current",
+      "source_name": "HDFC scheme page",
+      "fact_type": "minimum_sip",
+      "freshness_class": "dynamic"
+    }
+  },
+  {
+    "chunk_id": "RAG021",
+    "document": "Very High.",
+    "metadata": {
+      "scheme_or_scope": "HDFC Mid Cap Fund",
+      "document_date_or_freshness": "current",
+      "chunk_id": "RAG021",
+      "source_id": "4",
+      "freshness_class": "dynamic",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-mid-cap-fund/direct",
+      "source_name": "HDFC scheme page",
+      "fact_type": "riskometer"
+    }
+  },
+  {
+    "chunk_id": "RAG022",
+    "document": "To provide long term capital appreciation / income from a dynamic mix of equity and debt investments.",
+    "metadata": {
+      "freshness_class": "stable",
+      "document_date_or_freshness": "2025-11-21",
+      "source_url": "https://files.hdfcfund.com/s3fs-public/KIM/2025-11/KIM%20-%20HDFC%20Balanced%20Advantage%20Fund%20dated%20November%2021%2C%202025_0.pdf",
+      "chunk_id": "RAG022",
+      "source_name": "HDFC KIM",
+      "scheme_or_scope": "HDFC Balanced Advantage Fund",
+      "source_id": "10",
+      "fact_type": "objective"
+    }
+  },
+  {
+    "chunk_id": "RAG023",
+    "document": "NIFTY 50 Hybrid Composite Debt 50:50 Index.",
+    "metadata": {
+      "freshness_class": "medium",
+      "document_date_or_freshness": "current",
+      "scheme_or_scope": "HDFC Balanced Advantage Fund",
+      "source_name": "HDFC scheme page",
+      "source_id": "5",
+      "chunk_id": "RAG023",
+      "fact_type": "benchmark",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-balanced-advantage-fund/direct"
+    }
+  },
+  {
+    "chunk_id": "RAG024",
+    "document": "₹100.",
+    "metadata": {
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-balanced-advantage-fund/direct",
+      "source_name": "HDFC scheme page",
+      "freshness_class": "dynamic",
+      "scheme_or_scope": "HDFC Balanced Advantage Fund",
+      "fact_type": "minimum_sip",
+      "chunk_id": "RAG024",
+      "source_id": "5",
+      "document_date_or_freshness": "current"
+    }
+  },
+  {
+    "chunk_id": "RAG025",
+    "document": "Very High.",
+    "metadata": {
+      "source_id": "5",
+      "fact_type": "riskometer",
+      "source_name": "HDFC scheme page",
+      "freshness_class": "dynamic",
+      "document_date_or_freshness": "current",
+      "chunk_id": "RAG025",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-balanced-advantage-fund/direct",
+      "scheme_or_scope": "HDFC Balanced Advantage Fund"
+    }
+  },
+  {
+    "chunk_id": "RAG026",
+    "document": "15% of units may be redeemed without exit load; excess redemption is subject to 1.00% exit load within 1 year; no exit load after 1 year.",
+    "metadata": {
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-balanced-advantage-fund/regular",
+      "chunk_id": "RAG026",
+      "scheme_or_scope": "HDFC Balanced Advantage Fund",
+      "source_id": "5",
+      "freshness_class": "dynamic",
+      "fact_type": "exit_load",
+      "document_date_or_freshness": "current",
+      "source_name": "HDFC scheme page"
+    }
+  },
+  {
+    "chunk_id": "RAG027",
+    "document": "HDFC provides an account-statement request service; investors can request account, dividend, exit-load, capital-gains, consolidated account and consolidated realized-gains statements.",
+    "metadata": {
+      "source_id": "19",
+      "chunk_id": "RAG027",
+      "source_url": "https://www.hdfcfund.com/services/additional-info/request-statement",
+      "source_name": "HDFC Request Statement",
+      "fact_type": "account_statement",
+      "document_date_or_freshness": "current",
+      "freshness_class": "dynamic",
+      "scheme_or_scope": "HDFC Mutual Fund"
+    }
+  },
+  {
+    "chunk_id": "RAG028",
+    "document": "The latest factsheet listed by HDFC is the August 2026 HDFC MF Factsheet.",
+    "metadata": {
+      "freshness_class": "dynamic",
+      "document_date_or_freshness": "2026-08",
+      "source_url": "https://www.hdfcfund.com/mutual-funds/factsheets",
+      "source_id": "18",
+      "source_name": "HDFC Factsheet Index",
+      "chunk_id": "RAG028",
+      "fact_type": "latest_factsheet",
+      "scheme_or_scope": "HDFC Mutual Fund"
+    }
+  },
+  {
+    "chunk_id": "RAG029",
+    "document": "The portfolio disclosure page currently lists a Monthly Portfolio Disclosure dated August 31, 2026 and fortnightly disclosures for August 31 and August 15, 2026.",
+    "metadata": {
+      "document_date_or_freshness": "2026-08-31",
+      "scheme_or_scope": "HDFC Mutual Fund",
+      "source_url": "https://www.hdfcfund.com/statutory-disclosure/portfolio/notices-portfolio",
+      "source_name": "HDFC Portfolio Disclosure",
+      "freshness_class": "dynamic",
+      "source_id": "17",
+      "chunk_id": "RAG029",
+      "fact_type": "portfolio_disclosure"
+    }
+  },
+  {
+    "chunk_id": "RAG030",
+    "document": "SEBI's Mutual Fund Master Circular is dated March 20, 2026 and came into force April 1, 2026, replacing the June 27, 2024 Master Circular.",
+    "metadata": {
+      "source_id": "20",
+      "document_date_or_freshness": "2026-03-20",
+      "scheme_or_scope": "SEBI Mutual Funds",
+      "freshness_class": "regulatory",
+      "source_url": "https://www.sebi.gov.in/legal/master-circulars/mar-2026/master-circular-for-mutual-funds_100491.html",
+      "chunk_id": "RAG030",
+      "source_name": "SEBI Master Circular",
+      "fact_type": "regulatory_framework"
+    }
+  },
+  {
+    "chunk_id": "RAG031",
+    "document": "AMFI provides an official Scheme Details interface where a mutual fund and scheme name can be selected.",
+    "metadata": {
+      "source_url": "https://www.amfiindia.com/otherdata/scheme-details",
+      "freshness_class": "cross_check",
+      "source_id": "22",
+      "document_date_or_freshness": "current",
+      "fact_type": "scheme_details",
+      "scheme_or_scope": "AMFI",
+      "source_name": "AMFI Scheme Details",
+      "chunk_id": "RAG031"
+    }
+  },
+  {
+    "chunk_id": "RAG032",
+    "document": "Exit load: NIL.",
+    "metadata": {
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-elss-tax-saver-fund/direct",
+      "document_date_or_freshness": "Current scheme page",
+      "fact_type": "exit_load",
+      "scheme_or_scope": "HDFC ELSS Tax Saver",
+      "chunk_id": "RAG032",
+      "source_id": "3",
+      "source_name": "HDFC ELSS Tax Saver Fund official scheme page",
+      "freshness_class": "very_high"
+    }
+  },
+  {
+    "chunk_id": "RAG033",
+    "document": "Mr. Chirag Setalvad; Mr. Dhruv Muchhal.",
+    "metadata": {
+      "document_date_or_freshness": "current",
+      "fact_type": "fund_manager",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-mid-cap-fund/direct",
+      "source_id": "4",
+      "chunk_id": "RAG033",
+      "freshness_class": "very_high",
+      "scheme_or_scope": "HDFC Mid Cap Fund",
+      "source_name": "HDFC scheme page"
+    }
+  },
+  {
+    "chunk_id": "RAG034",
+    "document": "Mr. Rahul Baijal; Mr. Dhruv Muchhal.",
+    "metadata": {
+      "source_name": "HDFC scheme page",
+      "document_date_or_freshness": "current",
+      "fact_type": "fund_manager",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-large-cap-fund/regular",
+      "scheme_or_scope": "HDFC Large Cap Fund",
+      "freshness_class": "very_high",
+      "source_id": "1",
+      "chunk_id": "RAG034"
+    }
+  },
+  {
+    "chunk_id": "RAG035",
+    "document": "Total Expense Ratio (TER): Scheme page currently displays TER of 1.48% (Regular Plan) and 0.90% (Direct Plan); the dedicated current TER report remains the statutory source for updated daily TER disclosures.",
+    "metadata": {
+      "fact_type": "current_ter",
+      "source_name": "HDFC scheme page + TER report",
+      "source_id": "1,16",
+      "document_date_or_freshness": "current",
+      "scheme_or_scope": "HDFC Large Cap Fund",
+      "source_url": "https://www.hdfcfund.com/statutory-disclosure/total-expense-ratio-of-mutual-fund-schemes/reports",
+      "chunk_id": "RAG035",
+      "freshness_class": "very_high"
+    }
+  },
+  {
+    "chunk_id": "RAG036",
+    "document": "Total Expense Ratio (TER): Scheme page currently displays TER of 1.45% (Regular Plan) and 0.77% (Direct Plan); the dedicated current TER report remains the statutory source for updated daily TER disclosures.",
+    "metadata": {
+      "chunk_id": "RAG036",
+      "document_date_or_freshness": "current",
+      "source_id": "2,16",
+      "source_url": "https://www.hdfcfund.com/statutory-disclosure/total-expense-ratio-of-mutual-fund-schemes/reports",
+      "scheme_or_scope": "HDFC Flexi Cap Fund",
+      "fact_type": "current_ter",
+      "source_name": "HDFC scheme page + TER report",
+      "freshness_class": "very_high"
+    }
+  },
+  {
+    "chunk_id": "RAG037",
+    "document": "Total Expense Ratio (TER): Scheme page currently displays TER of 1.39% (Regular Plan) and 0.73% (Direct Plan); the dedicated current TER report remains the statutory source for updated daily TER disclosures.",
+    "metadata": {
+      "document_date_or_freshness": "current",
+      "scheme_or_scope": "HDFC Mid Cap Fund",
+      "chunk_id": "RAG037",
+      "source_name": "HDFC scheme page + TER report",
+      "fact_type": "current_ter",
+      "source_url": "https://www.hdfcfund.com/statutory-disclosure/total-expense-ratio-of-mutual-fund-schemes/reports",
+      "source_id": "4,16",
+      "freshness_class": "very_high"
+    }
+  },
+  {
+    "chunk_id": "RAG038",
+    "document": "Total Expense Ratio (TER): Scheme page currently displays TER of 1.38% (Regular Plan) and 0.71% (Direct Plan); the dedicated current TER report remains the statutory source for updated daily TER disclosures.",
+    "metadata": {
+      "document_date_or_freshness": "current",
+      "fact_type": "current_ter",
+      "source_url": "https://www.hdfcfund.com/statutory-disclosure/total-expense-ratio-of-mutual-fund-schemes/reports",
+      "source_id": "5,16",
+      "freshness_class": "very_high",
+      "source_name": "HDFC scheme page + TER report",
+      "scheme_or_scope": "HDFC Balanced Advantage Fund",
+      "chunk_id": "RAG038"
+    }
+  },
+  {
+    "chunk_id": "RAG039",
+    "document": "Fund Managers: Ms. Roshi Jain; Mr. Dhruv Muchhal (Overseas investments).",
+    "metadata": {
+      "fact_type": "fund_manager",
+      "document_date_or_freshness": "current",
+      "freshness_class": "very_high",
+      "source_name": "HDFC scheme page",
+      "source_id": "2",
+      "chunk_id": "RAG039",
+      "scheme_or_scope": "HDFC Flexi Cap Fund",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-flexi-cap-fund/direct"
+    }
+  },
+  {
+    "chunk_id": "RAG040",
+    "document": "Fund Managers: Ms. Roshi Jain; Mr. Dhruv Muchhal (Overseas investments).",
+    "metadata": {
+      "fact_type": "fund_manager",
+      "freshness_class": "very_high",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-elss-tax-saver-fund/direct",
+      "source_name": "HDFC scheme page",
+      "source_id": "3",
+      "chunk_id": "RAG040",
+      "document_date_or_freshness": "current",
+      "scheme_or_scope": "HDFC ELSS Tax Saver"
+    }
+  },
+  {
+    "chunk_id": "RAG041",
+    "document": "Fund Managers: Mr. Gopal Agrawal, Mr. Srinivasan Ramamurthy, Mr. Arun Agarwal, Mr. Nirman Morakhia; Mr. Dhruv Muchhal (Overseas investments).",
+    "metadata": {
+      "source_id": "5",
+      "document_date_or_freshness": "current",
+      "freshness_class": "very_high",
+      "scheme_or_scope": "HDFC Balanced Advantage Fund",
+      "chunk_id": "RAG041",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-balanced-advantage-fund/direct",
+      "source_name": "HDFC scheme page",
+      "fact_type": "fund_manager"
+    }
+  },
+  {
+    "chunk_id": "RAG042",
+    "document": "Exit Load: 1.00% if units are redeemed/switched out within 1 year from the date of allotment; NIL after 1 year.",
+    "metadata": {
+      "document_date_or_freshness": "current",
+      "scheme_or_scope": "HDFC Mid Cap Fund",
+      "source_url": "https://www.hdfcfund.com/explore/mutual-funds/hdfc-mid-cap-fund/direct",
+      "fact_type": "exit_load",
+      "chunk_id": "RAG042",
+      "freshness_class": "very_high",
+      "source_id": "4",
+      "source_name": "HDFC scheme page"
+    }
+  },
+  {
+    "chunk_id": "RAG043",
+    "document": "HDFC Large Cap Fund - Direct Plan - Growth Option NAV was ₹1,189.079 as of 25 Sep 2026.",
+    "metadata": {
+      "source_id": "23",
+      "plan": "Direct Plan - Growth Option",
+      "document_date_or_freshness": "2026-09-25",
+      "source_title": "HDFC Mutual Fund - NAV & IDCW",
+      "fact_type": "NAV",
+      "freshness_class": "daily",
+      "source_authority": "official",
+      "verified": true,
+      "source_url": "https://www.hdfcfund.com/nav-and-idcw",
+      "source_name": "HDFC Mutual Fund - NAV & IDCW",
+      "chunk_id": "RAG043",
+      "nav_date": "2026-09-25",
+      "scheme": "HDFC Large Cap Fund",
+      "scheme_or_scope": "HDFC Large Cap Fund"
+    }
+  },
+  {
+    "chunk_id": "RAG044",
+    "document": "HDFC Flexi Cap Fund - Direct Plan - Growth Option NAV was ₹2,214.572 as of 25 Sep 2026.",
+    "metadata": {
+      "scheme_or_scope": "HDFC Flexi Cap Fund",
+      "freshness_class": "daily",
+      "source_name": "HDFC Mutual Fund - NAV & IDCW",
+      "chunk_id": "RAG044",
+      "source_title": "HDFC Mutual Fund - NAV & IDCW",
+      "source_url": "https://www.hdfcfund.com/nav-and-idcw",
+      "nav_date": "2026-09-25",
+      "source_id": "23",
+      "source_authority": "official",
+      "verified": true,
+      "plan": "Direct Plan - Growth Option",
+      "scheme": "HDFC Flexi Cap Fund",
+      "document_date_or_freshness": "2026-09-25",
+      "fact_type": "NAV"
+    }
+  },
+  {
+    "chunk_id": "RAG045",
+    "document": "HDFC ELSS - Tax Saver Fund - Direct Plan - Growth Option NAV was ₹1,447.383 as of 25 Sep 2026.",
+    "metadata": {
+      "source_authority": "official",
+      "source_url": "https://www.hdfcfund.com/nav-and-idcw",
+      "plan": "Direct Plan - Growth Option",
+      "nav_date": "2026-09-25",
+      "verified": true,
+      "source_title": "HDFC Mutual Fund - NAV & IDCW",
+      "source_id": "23",
+      "source_name": "HDFC Mutual Fund - NAV & IDCW",
+      "chunk_id": "RAG045",
+      "freshness_class": "daily",
+      "fact_type": "NAV",
+      "scheme_or_scope": "HDFC ELSS Tax Saver",
+      "document_date_or_freshness": "2026-09-25",
+      "scheme": "HDFC ELSS Tax Saver"
+    }
+  },
+  {
+    "chunk_id": "RAG046",
+    "document": "HDFC Mid Cap Fund - Direct Plan - Growth Option NAV was ₹226.380 as of 25 Sep 2026.",
+    "metadata": {
+      "source_name": "HDFC Mutual Fund - NAV & IDCW",
+      "fact_type": "NAV",
+      "source_authority": "official",
+      "source_url": "https://www.hdfcfund.com/nav-and-idcw",
+      "freshness_class": "daily",
+      "source_id": "23",
+      "verified": true,
+      "chunk_id": "RAG046",
+      "document_date_or_freshness": "2026-09-25",
+      "scheme": "HDFC Mid Cap Fund",
+      "scheme_or_scope": "HDFC Mid Cap Fund",
+      "source_title": "HDFC Mutual Fund - NAV & IDCW",
+      "plan": "Direct Plan - Growth Option",
+      "nav_date": "2026-09-25"
+    }
+  },
+  {
+    "chunk_id": "RAG047",
+    "document": "HDFC Balanced Advantage Fund - Direct Plan - Growth Option NAV was ₹557.728 as of 25 Sep 2026.",
+    "metadata": {
+      "source_title": "HDFC Mutual Fund - NAV & IDCW",
+      "source_name": "HDFC Mutual Fund - NAV & IDCW",
+      "scheme": "HDFC Balanced Advantage Fund",
+      "chunk_id": "RAG047",
+      "scheme_or_scope": "HDFC Balanced Advantage Fund",
+      "verified": true,
+      "nav_date": "2026-09-25",
+      "source_authority": "official",
+      "plan": "Direct Plan - Growth Option",
+      "source_id": "23",
+      "freshness_class": "daily",
+      "document_date_or_freshness": "2026-09-25",
+      "source_url": "https://www.hdfcfund.com/nav-and-idcw",
+      "fact_type": "NAV"
+    }
+  }
+]
